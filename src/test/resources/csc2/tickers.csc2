@@ -1,0 +1,14 @@
+// tickers.csc2
+// Schema for table "tickers"
+
+tag ondisk
+{
+    cstring   ticker[50]
+    datetime  pricing_date
+    decimal32 price
+}
+
+keys
+{
+    "KEY_PRIMARY" = ticker + pricing_date
+}
