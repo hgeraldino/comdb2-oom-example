@@ -26,6 +26,7 @@ underlying JVM. This is not a theoretical problem: we've encountered this issue 
 of the JDBC driver.
 
 ![](heap.png)
+
 This is a heap capture from a running JVM showing the large amount of memory (over 6GB) of just `java.lang.String` references
 kept by the `Comdb2Handle` internal `List<String> set` field.
 
