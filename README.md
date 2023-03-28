@@ -3,7 +3,7 @@ This project showcases an issue we encounter when setting some JDBC parameters (
 in a long-lived application.
 
 ## Context
-Each instance of a `com.bloomberg.comdb2.jdbc.Comdb2Connection` connection object creates an [internal
+Each instance of a `com.bloomberg.comdb2.jdbc.Comdb2Connection` class creates an [internal
 Comdb2Handle](https://github.com/bloomberg/comdb2/blob/master/cdb2jdbc/src/main/java/com/bloomberg/comdb2/jdbc/Comdb2Connection.java#L89) 
 instance that is used to communicate with the database. 
 
@@ -21,7 +21,7 @@ These commands are set either at the `Comdb2Connection` or `Comdb2Statement` lev
 
 ## Problem Statement
 Because the `Comdb2Handle` is created per `Comdb2Connection` and reused across all statements, there's
-a potential for the `List<String>` of `set` commands to grow unbounded and cause Out Of Memory errors on the
+a potential for the list of `set` commands to grow unbounded and cause Out Of Memory errors on the
 underlying JVM. This is not a theoretical problem: we've encountered this issue when running the latest `2.6.0` version
 of the JDBC driver.
 
